@@ -1,0 +1,17 @@
+// Boot file
+
+@LAZYGLOBAL OFF.
+WAIT 5.
+CORE:PART:GETMODULE("kOSProcessor"):DOEVENT("Open Terminal").
+SET TERMINAL:HEIGHT TO 24.
+SET TERMINAL:WIDTH TO 42.
+SET TERMINAL:BRIGHTNESS TO 0.8.
+SET TERMINAL:CHARHEIGHT TO 10.
+
+LOCAL missionFile IS SHIP:NAME + ".mission.ks".
+
+CLEARSCREEN.
+IF ADDONS:RT:HASCONNECTION(SHIP) {
+    COPYPATH("0:/missions/SoundingRockets/"+ missionFile,"mission.ks").
+    RUNPATH("mission.ks").
+}
