@@ -34,6 +34,16 @@ libRealChute.ks : Used to arm parachutes.
 
 libLaunchSolid.ks : Launches early rockets with solids as upper stages. After initial pitch the rocket follows prograde until apoapsis, then solids are firing to finish orbit. It can support one stage (example is Juno I) or two stages to apoapsis (like Vanguard or RP-0 tutorial ship). Ship must have RCS to guide the rocket to apopasis after last engine is flameout. Parameters accept Azimuth (not Inclination), and targetApoapsis for two stage rockets.
 
+libLaunchATM.ks : The pinnacle of Atmospheric ascents. All credit should go to the original [author](https://www.reddit.com/r/Kos/comments/4oswqg/i_wrote_a_launch_script_for_rorp0_based_on/). It needs an Atmospheric Pressure sensor on craft to work and basically it launches the rocket to the desired inclination at around 140km to 200km orbit. The original script uses three variables that i moved on a separate file (thus the ship file), so that those three variables can be different for each Launch Vehicle, which is more appropriate. You can expect a constant 8900 to 9000 Dv to orbit depending on the three variables. More information at the original post.
+
+libLaunchWindow.ks : Match Planes with target. It launches 2 degrees ahead.
+
+libWaitForLAN.ks : Used to launch at a specific LAN.
+
+libOrbitalManus.ks : Can change apoapsis and periapsis of an orbit.
+
+libNode.ks : Executes node maneuvers.
+
 ### Astra Missions (aka Sounding Rockets)
 Select bootSR.ks as boot file, must rename vessel to the mission profile before launch. On a normal playthought I launch 5-6 sounding rockets before i am ready for Orbit. There are 3 kinds of Sounding Rockets mission profiles.
 * Astra.mission.ks : A normal WAC Corporal sounding rocket. Just go up and stage when necessary. Example ships Astra 1, Astra 2, Astra 3.
@@ -44,3 +54,15 @@ There is an another Astra.mission.ks profile found under missions/RP-0. For use 
 
 ### Gaia 1
 Select boot.ks. The first orbitable rocket can be launch *normally* after having Early Rocketry and Early Avionics. My example ship is a Vanguard first stage with ABLE and solid stages. It utilizes libLaunchSolid.ks script. The ship file is not actually used but is required.
+
+### Gaia 2
+Can complete the weather type of contracts.
+* Atmospheric Analysis
+* Meteorological Satellite
+* Micrometeorite Measurements
+* Meteorological Satellite Platform (maybe)
+
+Those contracts need to have a restartable upper engine to first launch to parking orbit, raise apoapsis and last raise periapsis. My example ship uses Caprica I Launch Vechicle.
+
+### Selene 1
+Moon Flyby and Impactor. Cannot fully automated everything because of the nature of solid upper stages and their fixed Dv. Most probably you will need 5-6 launches to complete the three Moon Impactor contracts. First you must wait for relative inclination to be around 2 degrees, launch to orbit and then use MechJeb to create a Hohmann node to Moon. Then edit the Dv of that node to match your solids total Dv. At that point you lost Moon but in most of cases if you bring the node time closer you will have the impact again. If anyone can thing a way to automated this with kOS please let us know!

@@ -11,10 +11,6 @@ FUNCTION FLAMEOUT {
   SET prevMaxThrust TO MAXTHRUST.
 }
 
-Function LAUNCHFULLTHRUST {
-  
-}
-
 FUNCTION ACTIVATORS {
   IF SHIP:ALTITUDE > 100000 {
     FOR module IN SHIP:MODULESNAMED("ProceduralFairingDecoupler") {
